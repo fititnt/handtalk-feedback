@@ -19,7 +19,9 @@ raramente vai ser usada. Note: não tenho críticas a 19MB necessário quando a 
 JavaScript na mesma janela (não iframes) por padrão, isso dá completo poder sobre
 o que ocorre, não apenas o leitor de tela
 - **Os termos de uso abrem margem para uso para fins comerciais se a empresa for
-comprada**, o combo muitos sites usando
+comprada**, o combo muitos sites usando a versão gratuita e o poder de
+rastreamento tornaria esse projeto altamente interessante para análise de
+concorrência.
 
 
 ## Do que esse feedback não trata
@@ -33,7 +35,7 @@ _Nota: boa parte desses pontos não tem como serem resolvidos porque dependem
 disso para a aplicação web funcionar. O ideal seria, no mínimo, que pessoas
 tenham opção de só carregar JavaScript e dar poder ao Hand Talk se algum
 link for clicado, ou mesmo que o Hand Talk seja uma extensão para navegador,
-não algo a ser adicionado por padrão em todos os sites.
+não algo a ser adicionado por padrão em todos os sites._
 
 ### Apelo à autoridade
 
@@ -45,7 +47,29 @@ Dos principais motivos que me levaram a escrever isso, ao contrário de boas
 práticas, como uso das WCAG, a inclusão de scripts proprietários NÃO é um
 requerimento para cumprir legislação brasileira.
 
-Assim como críticas que faço na [Carta aberta ao Prêmio Nacional de Acessibilidade na Web](https://github.com/fititnt/carta-aberta-premio-nacional-acessibilidade-na-web),
+Eu fortemente não recomendo que uso de tal solução sequer seja considerada como
+vantagem extra para ser visto como "site acessível" em premiações como
+o Todos@Web. Tal endorsamento implicaria em forma implicita de vantagem
+estatal a empresa privada. E mesmo que o HandTalk ainda fosse estatal, ainda
+seria um problema, porque ainda exige servidores dos quais desenvolvedores web
+não tem pleno poder de controle.
+
+Veja também a [Carta aberta ao Prêmio Nacional de Acessibilidade na Web](https://github.com/fititnt/carta-aberta-premio-nacional-acessibilidade-na-web).
+
+### O uso do script deixa o site mais lento, e gasta mais banda de TODOS os visitantes
+
+Um site aleatório com o script, mesmo para quem não usa o HandTalk, gasta incríveis
+208KB:
+
+![Exemplo de lista de arquivos carregados em um site: 208KB, mesmo quando app não é usado pelo usuario](arquivos-carregados-por-padrao-sempre.png)
+
+A título de comparação, outra tela exibindo quando é gasto no primeiro
+carregamento do HandTalk: 17.7MB. Notem, porém, que não tenho tenho argumentos
+fortes para críticar esse tamanho, também porque para usuários frequentes, é
+provável que apenas o primeiro carregamento, mesmo entre sites diferentes, iria
+dispender isto.
+
+![Exemplo de lista de arquivos carregados em um site: 17.7MB, quando é usado pelo usuario](arquivos-carregados-quando-ativado.png)
 
 ### Obrigatoriedade de Uso de JavaScript: muito poder por padrão
 Ao incluir JavaScript na _mesma janela_ e nao em um `iframe`, isso dá completo
@@ -53,7 +77,50 @@ poder. Isso é equivalente a [Cross-site scripting](https://pt.wikipedia.org/wik
 e a garantia de não ocorrer é de que o servidor original não seja comprometido
 (por exemplo, ocorra uma invasão) e também por questões políticas.
 
+Não, uso de HTTPS não resolve esse problema. Isso evita que pessoas além da
+HandTalk.me não alterem conteúdo, porém não evita que o proprio HandTalk.me
+deixe de fazer rastreamento ou mesmo, de forma intensional ou por invasão,
+possa ser usado para tomar controle dos sites em que tem acesso.
 
+Não por acaso o site tem até uma resposta a uma pergunta frequênte [que explica
+não ser possível adicionar seu plugin em sites do WIX](http://suporte.handtalk.me/hc/pt-br/articles/218408658-Meu-site-foi-feito-na-plataforma-WIX-Posso-colocar-o-Hand-Talk-nele-).
+
+
+## Dos termos de uso, possibilidade de usar dados para fins adversos
+
+Não consegui achar o termo de uso exato para script inforporado via web. O mais
+próximo que encontrei foi o [Termos de Uso do Aplicativo Hand Talk](http://suporte.handtalk.me/hc/pt-br/articles/218403418-Termos-de-Uso-do-Aplicativo-Hand-Talk).
+
+> 5. Coleta e tratamento de informações
+> 
+> As informações coletadas através do aplicativo são utilizadas exclusivamente pela Hand Talk para auxiliar na otimização da qualidade do serviço prestado. Elas são analisadas para determinar o que é mais eficaz no aplicativo, para identificar meios de melhorá-lo e determinar como customizá-lo para atender a demanda dos usuários. Os dados, também poderão ser utilizados para outros fins de pesquisas e estudos para futuras aplicações da Hand Talk.
+
+É comum termos de uso, em especial de aplicações via Web, deixarem claro com
+quem compartilham informações. Isto não fica claro nesse termo de uso.
+Idealmente deiveriam deixar claro se pode ou não ser compartilhado com parceiros.
+
+Ainda assim, assumindo que não compartilham com terceiros, um risco que eu
+pessoalmente alertaria a todos aqui é: e se a empresa for comprada?
+
+> 1. Condições de Uso
+> 
+> Os termos aqui descritos são aplicados somente ao aplicativo Hand Talk.
+Alterações ou correções poderam ser realizadas nos termos de uso, e caso aconteça, você será notificado. Concordando com as mudanças, você poderá continuar usufruindo normalmente o serviço.
+
+Do comentário do Fundador em https://github.com/frontendbr/forum/issues/210#issuecomment-255768269
+
+> ThadeuLuz commented 6 hours ago • edited
+> Aviso: sou um dos fundadores da Hand Talk
+> 
+> Acho que devemos fazer um trabalho melhor na comunicação sobre como funciona a propaganda. Peço desculpas por não termos feito isso inicialmente.
+> 
+> A 'propaganda' é só uma imagem com um link para uma página sempre em algum domínio nosso (handtalk.me ou amigodosurdo.com), mostrada enquanto o plugin abre. Não tem javascript de terceiros pra rede de afiliados ou coisa do tipo. **Até as do Uber que vc vê hoje, são links para posts no nosso blog**. O único JavaScript de terceiros que usamos é o gerado pelo Unity 3D, que é nosso engine pra webGL.
+> 
+> Nesse link tem mais informações sobre segurança. Somos um time pequeno, mas estamos considerando a possibilidade de abrir o código fonte do tradutor de sites.
+
+Num primeiro momento, eu não tinha parado para pensar nisso, mas ao ler "Até as
+do Uber que vc vê hoje, são links para posts no nosso blog" isso me deu um
+receio:
 
 ## Direitos de cópia - DMCA Fair Use
 
