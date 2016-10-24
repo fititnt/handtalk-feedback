@@ -4,7 +4,11 @@ As informações aqui são críticas da a forma como o script do [HandTalk.me](h
 é incluso em sites, não é sobre o aplicativo móvel e são válidas para a data
 em que isto é escrito. Teve origem na discussão [Sites acessiveis para surdos, com conteudo em libras](https://github.com/frontendbr/forum/issues/210).
 
-Explicitamente, isto **não** critica a qualidade do serviço final
+Todos os sites que usam o script web do HandTalk.me tem impacto negativo além
+do mínimo necessário em performance de carregamento de página. Além disso,
+todos os sites, para todos os visitantes, não somente os surdos, executam
+JavaScript na janela principal (sem isolamento), [que permite controle
+total sobre o que ocorre no site](https://pt.wikipedia.org/wiki/Cross-site_scripting).
 
 **TL;DR:**:
 
@@ -13,15 +17,16 @@ do que o site poderia deixar subentendido
 - **Deixa o site mais lento**: 208KB de arquivos para uma uma funcionalidade que
 raramente vai ser usada. Note: não tenho críticas a 19MB necessário quando a solução
 é usada
-- **Requer JavaScript e extrema confiança nos sites que os usam**: ao requerer
-JavaScript na mesma janela (não iframes) por padrão, isso dá completo poder sobre
-o que ocorre, não apenas para surdos
+- **Requer JavaScript e extrema confiança nos sites que os usam**: o uso do
+script permite controle absoluto sobre o que ocorre na página para TODOS os
+usuários (não apenas surdos).
 - **Os termos de uso abrem margem para uso para fins comerciais se a empresa for
 comprada**, o combo muitos sites usando a versão gratuita e o poder de
 rastreamento tornaria esse projeto altamente interessante para análise de
 concorrência.
 - **Uma forma de mitigar essas críticas é carregar script dos servidores do
-HandTalk apenas quando for efetivamente necessário**
+HandTalk apenas quando for efetivamente necessário**, melhora performance de
+sites e protege privacidade de usuários não surdos
 
 ## Do que esse feedback não trata
 Esse feedback não aborda qualquer ponto quanto a qualidade do serviço final
@@ -29,12 +34,6 @@ propriamente dito. Não tenho experiência na área para comentários positivos
 ou de pontos de melhoria sobre o serviço em si.
 
 # Dos pontos de melhoria
-
-_Nota: boa parte desses pontos não tem como serem resolvidos porque dependem
-disso para a aplicação web funcionar. O ideal seria, no mínimo, que pessoas
-tenham opção de só carregar JavaScript e dar poder ao Hand Talk se algum
-link for clicado, ou mesmo que o HandTalk seja uma extensão para navegador,
-não algo a ser adicionado por padrão em todos os sites._
 
 ## Apelo à autoridade
 
@@ -123,6 +122,7 @@ Alterações ou correções poderam ser realizadas nos termos de uso, e caso aco
 Do comentário do Fundador em https://github.com/frontendbr/forum/issues/210#issuecomment-255768269
 
 > ThadeuLuz commented 6 hours ago • edited
+>
 > Aviso: sou um dos fundadores da Hand Talk
 > 
 > Acho que devemos fazer um trabalho melhor na comunicação sobre como funciona a propaganda. Peço desculpas por não termos feito isso inicialmente.
@@ -144,9 +144,6 @@ compre o HandTalk e não use para, por exemplo, aproveitar do total controle
 que inclusão de JavaScript dá para até mesmo saber dados de login, tal empresa
 resolva apenas aproveitar informações coletadas, isso sozinho já tem um valor
 enorme.
-
-Creio que semanas atrás, eu vi até mesmo o script do HandTalk ser inclído em
-sites de grande acesso, como o Catraca Livre.
 
 # Proposta de melhoria
 
