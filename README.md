@@ -17,7 +17,7 @@ raramente vai ser usada. Note: não tenho críticas a 19MB necessário quando a 
 é usada
 - **Requer JavaScript e extrema confiança nos sites que os usam**: ao requerer
 JavaScript na mesma janela (não iframes) por padrão, isso dá completo poder sobre
-o que ocorre, não apenas o leitor de tela
+o que ocorre, não apenas para surdos
 - **Os termos de uso abrem margem para uso para fins comerciais se a empresa for
 comprada**, o combo muitos sites usando a versão gratuita e o poder de
 rastreamento tornaria esse projeto altamente interessante para análise de
@@ -29,7 +29,7 @@ Esse feedback não aborda qualquer ponto quanto a qualidade do serviço final
 propriamente dito. Não tenho experiência na área para comentários positivos
 ou de pontos de melhoria sobre o serviço em si.
 
-## Dos pontos de melhoria
+# Dos pontos de melhoria
 
 _Nota: boa parte desses pontos não tem como serem resolvidos porque dependem
 disso para a aplicação web funcionar. O ideal seria, no mínimo, que pessoas
@@ -37,7 +37,7 @@ tenham opção de só carregar JavaScript e dar poder ao Hand Talk se algum
 link for clicado, ou mesmo que o Hand Talk seja uma extensão para navegador,
 não algo a ser adicionado por padrão em todos os sites._
 
-### Apelo à autoridade
+## Apelo à autoridade
 
 De http://www.handtalk.me/sobre#lbi:
 
@@ -56,7 +56,7 @@ não tem pleno poder de controle.
 
 Veja também a [Carta aberta ao Prêmio Nacional de Acessibilidade na Web](https://github.com/fititnt/carta-aberta-premio-nacional-acessibilidade-na-web).
 
-### O uso do script deixa o site mais lento, e gasta mais banda de TODOS os visitantes
+## O uso do script deixa o site mais lento, e gasta mais banda de TODOS os visitantes
 
 Um site aleatório com o script, mesmo para quem não usa o HandTalk, gasta incríveis
 208KB:
@@ -71,7 +71,7 @@ dispender isto.
 
 ![Exemplo de lista de arquivos carregados em um site: 17.7MB, quando é usado pelo usuario](arquivos-carregados-quando-ativado.png)
 
-### Obrigatoriedade de Uso de JavaScript: muito poder por padrão
+## Obrigatoriedade de Uso de JavaScript: muito poder por padrão
 Ao incluir JavaScript na _mesma janela_ e nao em um `iframe`, isso dá completo
 poder. Isso é equivalente a [Cross-site scripting](https://pt.wikipedia.org/wiki/Cross-site_scripting)
 e a garantia de não ocorrer é de que o servidor original não seja comprometido
@@ -85,14 +85,13 @@ possa ser usado para tomar controle dos sites em que tem acesso.
 Não por acaso o site tem até uma resposta a uma pergunta frequênte [que explica
 não ser possível adicionar seu plugin em sites do WIX](http://suporte.handtalk.me/hc/pt-br/articles/218408658-Meu-site-foi-feito-na-plataforma-WIX-Posso-colocar-o-Hand-Talk-nele-).
 
-
 ## Dos termos de uso, possibilidade de usar dados para fins adversos
 
 Não consegui achar o termo de uso exato para script inforporado via web. O mais
 próximo que encontrei foi o [Termos de Uso do Aplicativo Hand Talk](http://suporte.handtalk.me/hc/pt-br/articles/218403418-Termos-de-Uso-do-Aplicativo-Hand-Talk).
 
 > 5. Coleta e tratamento de informações
-> 
+>
 > As informações coletadas através do aplicativo são utilizadas exclusivamente pela Hand Talk para auxiliar na otimização da qualidade do serviço prestado. Elas são analisadas para determinar o que é mais eficaz no aplicativo, para identificar meios de melhorá-lo e determinar como customizá-lo para atender a demanda dos usuários. Os dados, também poderão ser utilizados para outros fins de pesquisas e estudos para futuras aplicações da Hand Talk.
 
 É comum termos de uso, em especial de aplicações via Web, deixarem claro com
@@ -120,7 +119,34 @@ Do comentário do Fundador em https://github.com/frontendbr/forum/issues/210#iss
 
 Num primeiro momento, eu não tinha parado para pensar nisso, mas ao ler "Até as
 do Uber que vc vê hoje, são links para posts no nosso blog" isso me deu um
-receio:
+receio: e se a empresa, mesmo que a médio prazo, não for lucrativa? O que
+acontece se, mesmo com sucesso de ser usada por centenas de sites, porém
+mesmo para sites grandes, o uso for baixo a ponto de não ser economicamente
+viável?
+
+Neste caso, existe um tipo de empresa que adoraria comprar o HandTalk.me: as
+interessadas em saber informações sobre concorrência. Mesmo que uma empresa
+compre o HandTalk e não use para, por exemplo, aproveitar do total controle
+que inclusão de JavaScript dá para até mesmo saber dados de login, tal empresa
+resolva apenas aproveitar informações coletadas, isso sozinho já tem um valor
+enorme.
+
+Creio que semanas atrás, eu vi até mesmo o script do HandTalk ser inclído em
+sites de grande acesso, como o Catraca Livre.
+
+# Proposta de melhoria
+
+Uma forma de reduzir as críticas afirmadas aqui é relativamente simples:
+**apenas após interação de usuário, arquivos JavaScript, CSS e imagens poderiam
+ser carregado dos servidores do HandTalk.** Isto reduziria severamente o risco
+de privacidade e coleta de dados, bem como representaria um enorme ganho de
+velocidade em sites atuais.
+
+Esta alteração é mais complexa do que o "copiar e colar" oferecido no site
+como método de instalação, porém resolve maior parte das críticas aqui. Isto
+também reduz a atratividade da empresa em ser comprada por terceiros
+interessados no potencial de informação que ela pode ter mesmo com o plugin
+na versão gratúita.
 
 ## Direitos de cópia - DMCA Fair Use
 
