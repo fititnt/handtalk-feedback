@@ -1,12 +1,10 @@
 # Criticas quando ao plugin web do HandTalk.me
-As informações aqui contidas se aplicam ao software http://www.handtalk.me/, e
-expressam minha opinião pessoal, que é válida para o dia 24 de outubro de 2016.
-Tais afirmações poderão não ser válidas no futuro, e a pessoa leitora é
-convidada a avaliar a pertinência, ou mesmo precisão, das afirmações aqui.
 
-Este repositório surgiu da discussão iniciada em https://github.com/frontendbr/forum/issues/210,
-onde um fundador do projeto respondeu. Ele se **refere a inclusão em sites, não
-ao aplicativo para celulares**, e também **não questiona a qualidade do serviço**.
+As informações aqui são críticas da a forma como o script do [HandTalk.me](http://www.handtalk.me/)
+é incluso em sites, não é sobre o aplicativo móvel e são válidas para a data
+em que isto é escrito. Teve origem na discussão [Sites acessiveis para surdos, com conteudo em libras](https://github.com/frontendbr/forum/issues/210).
+
+Explicitamente, isto **não** critica a qualidade do serviço final
 
 **TL;DR:**:
 
@@ -22,7 +20,8 @@ o que ocorre, não apenas para surdos
 comprada**, o combo muitos sites usando a versão gratuita e o poder de
 rastreamento tornaria esse projeto altamente interessante para análise de
 concorrência.
-
+- **Uma forma de mitigar essas críticas é carregar script dos servidores do
+HandTalk apenas quando for efetivamente necessário**
 
 ## Do que esse feedback não trata
 Esse feedback não aborda qualquer ponto quanto a qualidade do serviço final
@@ -34,7 +33,7 @@ ou de pontos de melhoria sobre o serviço em si.
 _Nota: boa parte desses pontos não tem como serem resolvidos porque dependem
 disso para a aplicação web funcionar. O ideal seria, no mínimo, que pessoas
 tenham opção de só carregar JavaScript e dar poder ao Hand Talk se algum
-link for clicado, ou mesmo que o Hand Talk seja uma extensão para navegador,
+link for clicado, ou mesmo que o HandTalk seja uma extensão para navegador,
 não algo a ser adicionado por padrão em todos os sites._
 
 ## Apelo à autoridade
@@ -46,6 +45,19 @@ De http://www.handtalk.me/sobre#lbi:
 Dos principais motivos que me levaram a escrever isso, ao contrário de boas
 práticas, como uso das WCAG, a inclusão de scripts proprietários NÃO é um
 requerimento para cumprir legislação brasileira.
+
+Notem essa notícia em http://tce-rs.jusbrasil.com.br/noticias/294595254/tce-rs-disponibiliza-ferramenta-de-acessibilidade-hand-talk
+
+> A partir desta sexta-feira (08), o Tribunal de Contas do Estado (TCE-RS) conta com o Hand Talk, uma nova ferramenta de tradução digital para a Língua Brasileira de Sinais (Líbras). (...) Entre as vantagens do aplicativo, está a inclusão e o cumprimento da Lei nº 10.436 e do Decreto nº 186, que determinam que empresas públicas e privadas devem oferecer acessibilidade em Líbras.
+
+Repito: **em nenhum lugar sério do mundo é aceito como boa prática de
+acessibilidade uso de ferramenta proprietária**. Não importa quantos prêmios
+ganhe, mesmo que tenha sido eleito em algum momento como _um ótimo aplicativo_
+isso não torna seu uso uma recomendação técnica.
+
+Recomendações técnicas são avaliadas por dezenas, ou centenas, de profissionais
+de diferentes instituições. E o HandTalk é uma ferramenta, não um padrão de
+desenvolvimento.
 
 Eu fortemente não recomendo que uso de tal solução sequer seja considerada como
 vantagem extra para ser visto como "site acessível" em premiações como
@@ -90,18 +102,20 @@ não ser possível adicionar seu plugin em sites do WIX](http://suporte.handtalk
 Não consegui achar o termo de uso exato para script inforporado via web. O mais
 próximo que encontrei foi o [Termos de Uso do Aplicativo Hand Talk](http://suporte.handtalk.me/hc/pt-br/articles/218403418-Termos-de-Uso-do-Aplicativo-Hand-Talk).
 
-> 5. Coleta e tratamento de informações
+> 5 Coleta e tratamento de informações
 >
 > As informações coletadas através do aplicativo são utilizadas exclusivamente pela Hand Talk para auxiliar na otimização da qualidade do serviço prestado. Elas são analisadas para determinar o que é mais eficaz no aplicativo, para identificar meios de melhorá-lo e determinar como customizá-lo para atender a demanda dos usuários. Os dados, também poderão ser utilizados para outros fins de pesquisas e estudos para futuras aplicações da Hand Talk.
 
 É comum termos de uso, em especial de aplicações via Web, deixarem claro com
 quem compartilham informações. Isto não fica claro nesse termo de uso.
-Idealmente deiveriam deixar claro se pode ou não ser compartilhado com parceiros.
+Idealmente deveriam deixar claro se pode ou não ser compartilhado com parceiros.
 
-Ainda assim, assumindo que não compartilham com terceiros, um risco que eu
-pessoalmente alertaria a todos aqui é: e se a empresa for comprada?
+Ainda assim, assumindo que não compartilham com terceiros, ou que terceiros
+"digam que vão usar informações para melhorar o HandTalk, mas também usem
+os dados para outros fins" um risco que eu
+pessoalmente alertaria a todos aqui é: **e se a empresa for comprada?**
 
-> 1. Condições de Uso
+> 1 Condições de Uso
 > 
 > Os termos aqui descritos são aplicados somente ao aplicativo Hand Talk.
 Alterações ou correções poderam ser realizadas nos termos de uso, e caso aconteça, você será notificado. Concordando com as mudanças, você poderá continuar usufruindo normalmente o serviço.
