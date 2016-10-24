@@ -2,13 +2,22 @@
 
 As informações aqui são críticas da a forma como o script do [HandTalk.me](http://www.handtalk.me/)
 é incluso em sites, não é sobre o aplicativo móvel e são válidas para a data
-em que isto é escrito. Teve origem na discussão [Sites acessiveis para surdos, com conteudo em libras](https://github.com/frontendbr/forum/issues/210).
+em que isto é escrito. Teve origem na discussão [Sites acessiveis para surdos, com conteudo em libras](https://github.com/frontendbr/forum/issues/210). Ao final há sugestão de como mitigar tais problemas.
 
-Todos os sites que usam o script web do HandTalk.me tem impacto negativo além
-do mínimo necessário em performance de carregamento de página. Além disso,
-todos os sites, para todos os visitantes, não somente os surdos, executam
-JavaScript na janela principal (sem isolamento), [que permite controle
-total sobre o que ocorre no site](https://pt.wikipedia.org/wiki/Cross-site_scripting).
+Apenas para exibir um ícone, a implementação atual gera impacto negativo na
+performance de carregamento de página. Isso também é feito desnecessariamente com
+carregamento de JavaScript de origem externa, sem qualquer isolamento como com uso de `iframe`,
+[o que permite controle total sobre o que ocorre no site](https://pt.wikipedia.org/wiki/Cross-site_scripting),
+que **não** é impedido pelo uso de HTTPS, apenas centraliza.
+
+Profissionais que induzem uso de uma implementação (e não um [padrão como WCAG](https://www.w3.org/Translations/WCAG20-pt-br/))
+como boa prática ou **mesmo uma exigência** para cumprir legislação são convidados
+a refletir também dos impactos de exposição da privacidade de usuários, não
+apenas surdos, mas TODOS os visitantes de sites públicos ou privados. Estamos
+falando de **uma empresa privada**, código fonte fechado, servidores particulares
+e que, mesmo que hoje os termos de uso sejam vagos quanto a privacidade,
+é especialmente atraente para compra por quem queira ter acesso a estatisticas
+de acesso de grandes sites governamentais e particulares.
 
 **TL;DR:**:
 
@@ -27,11 +36,6 @@ concorrência.
 - **Uma forma de mitigar essas críticas é carregar script dos servidores do
 HandTalk apenas quando for efetivamente necessário**, melhora performance de
 sites e protege privacidade de usuários não surdos
-
-## Do que esse feedback não trata
-Esse feedback não aborda qualquer ponto quanto a qualidade do serviço final
-propriamente dito. Não tenho experiência na área para comentários positivos
-ou de pontos de melhoria sobre o serviço em si.
 
 # Dos pontos de melhoria
 
@@ -52,7 +56,7 @@ Notem essa notícia em http://tce-rs.jusbrasil.com.br/noticias/294595254/tce-rs-
 Repito: **em nenhum lugar sério do mundo é aceito como boa prática de
 acessibilidade uso de ferramenta proprietária**. Não importa quantos prêmios
 ganhe, mesmo que tenha sido eleito em algum momento como _um ótimo aplicativo_
-isso não torna seu uso uma recomendação técnica.
+isso **não** torna seu uso uma recomendação técnica.
 
 Recomendações técnicas são avaliadas por dezenas, ou centenas, de profissionais
 de diferentes instituições. E o HandTalk é uma ferramenta, não um padrão de
@@ -65,12 +69,18 @@ estatal a empresa privada. E mesmo que o HandTalk ainda fosse estatal, ainda
 seria um problema, porque ainda exige servidores dos quais desenvolvedores web
 não tem pleno poder de controle.
 
-Veja também a [Carta aberta ao Prêmio Nacional de Acessibilidade na Web](https://github.com/fititnt/carta-aberta-premio-nacional-acessibilidade-na-web).
-
 ## O uso do script deixa o site mais lento, e gasta mais banda de TODOS os visitantes
 
 Um site aleatório com o script, mesmo para quem não usa o HandTalk, gasta incríveis
-208KB:
+208KB. **Isto é muito, mas muito mais do que o necessário para exibir um ícone**.
+Mesmo assumindo boas práticas de desenvolvimento Web, o único caso aonde empregar
+esse pré-carregamento de arquivos seria se o publico do seu site fosse
+majoritariamente de pessoas surdas.
+
+Se seu site não é voltado majoritariamente para surdos, este é o ícone, você tem
+um ícone de 32 por 32 pixels que consome 208KB.
+
+Na imagem, uma demonstração de todos os arquivos carregados:
 
 ![Exemplo de lista de arquivos carregados em um site: 208KB, mesmo quando app não é usado pelo usuario](arquivos-carregados-por-padrao-sempre.png)
 
@@ -79,6 +89,10 @@ carregamento do HandTalk: 17.7MB. Notem, porém, que não tenho tenho argumentos
 fortes para críticar esse tamanho, também porque para usuários frequentes, é
 provável que apenas o primeiro carregamento, mesmo entre sites diferentes, iria
 dispender isto.
+
+Traduzindo para quem é leigo: a aplicação completa consumir 17.700KB não é
+necessariamente ruim. O ícone de 32 por 32 pesar 208KB para TODOS os visitantes,
+por outro lado, é muito ruim.
 
 ![Exemplo de lista de arquivos carregados em um site: 17.7MB, quando é usado pelo usuario](arquivos-carregados-quando-ativado.png)
 
@@ -151,7 +165,10 @@ Uma forma de reduzir as críticas afirmadas aqui é relativamente simples:
 **apenas após interação de usuário, arquivos JavaScript, CSS e imagens poderiam
 ser carregado dos servidores do HandTalk.** Isto reduziria severamente o risco
 de privacidade e coleta de dados, bem como representaria um enorme ganho de
-velocidade em sites atuais.
+velocidade em sites atuais. Também ajudaria com possíveis problemas de demora
+para carregar página se o site do HandTalk estiver inoperante, visto que
+o [SLA prometido é de apenas 99%](http://suporte.handtalk.me/hc/pt-br/articles/223125927-Considera%C3%A7%C3%B5es-sobre-a-seguran%C3%A7a-do-Tradutor-de-Sites),
+um problema para sites com SLA maior.
 
 Esta alteração é mais complexa do que o "copiar e colar" oferecido no site
 como método de instalação, porém resolve maior parte das críticas aqui. Isto
